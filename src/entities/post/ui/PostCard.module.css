@@ -9,13 +9,13 @@
 }
 
 .title {
-  color: #1a1a1a;
+  color: var(--text);
   font-weight: 500;
   font-size: 28px;
 }
 
 .content {
-  color: #1a1a1a;
+  color: var(--text);
   font-weight: 300;
   font-size: 18px;
 }
