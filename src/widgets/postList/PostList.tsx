@@ -1,10 +1,10 @@
 import { useCallback, useMemo, useState } from "react";
 import { posts, type Post } from "../../entities/mocks";
-import PostCard from "../../entities/post/ui/PostCard";
-import PostLengthFilter from "../../features/postLengthFilter/ui/PostLegthFilter";
+import { MemoizedPostCard } from "../../entities/post/ui/PostCard";
+import { PostLengthFilter } from "../../features/postLengthFilter/ui/PostLegthFilter";
 import { LengthFilter } from "../../features/postLengthFilter/lib/LengthFilter";
 
-const PostList = () => {
+export const PostList = () => {
   const [minLength, setMinLength] = useState(0);
 
   const filteredPosts: Post[] = useMemo(
@@ -20,7 +20,7 @@ const PostList = () => {
     <div>
       <PostLengthFilter value={minLength} onChange={handleChange} />
       {filteredPosts.map((post) => (
-        <PostCard
+        <MemoizedPostCard
           key={post.id}
           title={post.title}
           content={post.content}
@@ -30,5 +30,3 @@ const PostList = () => {
     </div>
   );
 };
-
-export default PostList;

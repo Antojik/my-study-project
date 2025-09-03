@@ -1,7 +1,5 @@
-import MainLayout from "../shared/layouts/MainLayout";
+import { MainLayout } from "../shared/layouts/MainLayout";
 
-const App = () => {
+export const App = () => {
   return <MainLayout />;
 };
-
-export default App;

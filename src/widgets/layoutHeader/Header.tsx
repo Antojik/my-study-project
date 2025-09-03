@@ -1,20 +1,28 @@
 import { useState } from "react";
 import { ThemeSwitcher } from "../../features/ui/ThemeSwitcher";
-import Button from "../../shared/ui/button/Button";
-import styles from "./header.module.css";
-import Modal from "../../shared/ui/modal/Modal";
+import { Button } from "../../shared/ui/button/Button";
+import styles from "./Header.module.css";
+import { Modal } from "../../shared/ui/modal/Modal";
 
-const Header = () => {
+export const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <header className={styles.header}>
       <h1>This is header</h1>
       <div className={styles.actions}>
-        <Button onClick={() => setIsModalOpen(true)} text="About Project" />
+        <Button onClick={handleOpenModal} text="About Project" />
         <ThemeSwitcher />
       </div>
-      <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <Modal open={isModalOpen} onClose={handleCloseModal}>
         <Modal.Header>
           <div>About Project</div>
         </Modal.Header>
@@ -40,11 +48,9 @@ const Header = () => {
           <div>This project only for my studying</div>
         </Modal.Body>
         <Modal.Actions>
-          <Button onClick={() => setIsModalOpen(false)} text="Close" />
+          <Button onClick={handleCloseModal} text="Close" />
         </Modal.Actions>
       </Modal>
     </header>
   );
 };
-
-export default Header;

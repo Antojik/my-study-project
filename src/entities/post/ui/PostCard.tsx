@@ -1,5 +1,5 @@
 import { memo } from "react";
-import CommentList from "../../../widgets/commentList/CommentList";
+import { CommentList } from "../../../widgets/commentList/CommentList";
 import type { Comment } from "../../mocks";
 import styles from "./PostCard.module.css";
 
@@ -19,4 +19,4 @@ const PostCard = ({ title, content, comments }: PostCardProps) => {
   );
 };
 
-export default memo(PostCard);
+export const MemoizedPostCard = memo(PostCard);

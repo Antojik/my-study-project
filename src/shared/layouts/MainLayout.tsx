@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import Footer from "../../widgets/layoutFooter/Footer";
-import Header from "../../widgets/layoutHeader/Header";
-import PostList from "../../widgets/postList/PostList";
-import withLoading from "../lib/hoc/WithLoading";
+import { Footer } from "../../widgets/layoutFooter/Footer";
+import { Header } from "../../widgets/layoutHeader/Header";
+import { PostList } from "../../widgets/postList/PostList";
+import { WithLoading } from "../lib/hoc/WithLoading";
 
-const MainLayout = () => {
-  const PostListWithLoading = withLoading(PostList);
+export const MainLayout = () => {
+  const PostListWithLoading = WithLoading(PostList);
 
   const [loading, setLoading] = useState(true);
 
@@ -27,5 +27,3 @@ const MainLayout = () => {
     </>
   );
 };
-
-export default MainLayout;

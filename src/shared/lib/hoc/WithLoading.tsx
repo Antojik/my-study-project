@@ -1,7 +1,9 @@
 import type { ComponentType } from "react";
-import styles from "./withLoading.module.css";
+import styles from "./WithLoading.module.css";
 
-function WithLoading<P extends object>(WrappedComponent: ComponentType<P>) {
+export function WithLoading<P extends object>(
+  WrappedComponent: ComponentType<P>
+) {
   return function ComponentWithLoading({
     isLoading,
     ...props
@@ -12,5 +14,3 @@ function WithLoading<P extends object>(WrappedComponent: ComponentType<P>) {
     return <WrappedComponent {...(props as P)} />;
   };
 }
-
-export default WithLoading;

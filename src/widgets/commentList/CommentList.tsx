@@ -1,12 +1,12 @@
 import { useCallback, useState } from "react";
 import type { Comment } from "../../entities/mocks";
-import styles from "./commentList.module.css";
+import styles from "./CommentList.module.css";
 
 interface CommentListProps {
   comments?: Comment[];
 }
 
-const CommentList = ({ comments = [] }: CommentListProps) => {
+export const CommentList = ({ comments = [] }: CommentListProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleComment = useCallback(() => {
@@ -39,5 +39,3 @@ const CommentList = ({ comments = [] }: CommentListProps) => {
     </>
   );
 };
-
-export default CommentList;

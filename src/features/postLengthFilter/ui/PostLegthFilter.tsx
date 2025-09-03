@@ -1,11 +1,14 @@
-import styles from "./postLengthFilter.module.css";
+import styles from "./PostLengthFilter.module.css";
 
 interface PostLengthFilterProps {
   value: number;
   onChange: (value: number) => void;
 }
 
-const PostLengthFilter = ({ value, onChange }: PostLengthFilterProps) => {
+export const PostLengthFilter = ({
+  value,
+  onChange,
+}: PostLengthFilterProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onChange(Number(e.target.value) || 0);
   };
@@ -22,5 +25,3 @@ const PostLengthFilter = ({ value, onChange }: PostLengthFilterProps) => {
     </div>
   );
 };
-
-export default PostLengthFilter;
