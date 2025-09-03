@@ -1,0 +1,26 @@
+.comments {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 400px;
+}
+
+.author {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.comment {
+  color: var(--text);
+  font-size: 18px;
+}
+
+.comment_empty {
+  color: var(--text);
+  font-size: 18px;
+}
+
+.button {
+  color: var(--link);
+}
