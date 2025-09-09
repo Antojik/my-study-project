@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  gap: 40px;
+}
+
+.link {
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--text);
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.active {
+  background-color: var(--background-2);
+}

@@ -1,11 +1,13 @@
 :root[data-theme="light"] {
-  --background: #fff;
+  --background-1: #fff;
+  --background-2: #c8d2e6;
   --text: #1a1a1a;
   --link: #007bff;
 }
 
 :root[data-theme="dark"] {
-  --background: #1a1a1a;
+  --background-1: #1a1b23;
+  --background-2: #484e5c;
   --text: #fff;
   --link: #64acfa;
 }
@@ -17,7 +19,7 @@
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(--background-1);
   margin: 0;
 }
 

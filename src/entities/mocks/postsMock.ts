@@ -1,19 +1,9 @@
-export interface Comment {
-  id: number;
-  author: string;
-  content: string;
-}
-
-export interface Post {
-  id: number;
-  title: string;
-  content: string;
-  comment?: Comment[];
-}
+import type { Post } from "./interfaces";
 
 export const posts: Post[] = [
   {
     id: 1,
+    userId: 1,
     title: "First post",
     content: "Small content of first post",
     comment: [
@@ -22,6 +12,7 @@ export const posts: Post[] = [
   },
   {
     id: 2,
+    userId: 2,
     title: "Second post",
     content:
       "Large content of first post, large content of first post, large content of first post, large content of first post, large content of first post, large content of first post, large content of first post, large content of first post",
@@ -36,5 +27,19 @@ export const posts: Post[] = [
     ],
   },
 
-  { id: 3, title: "Third post", content: "Small content of first post" },
+  {
+    id: 3,
+    userId: 1,
+    title: "Third post",
+    content: "Small content of first post",
+  },
+  {
+    id: 4,
+    userId: 3,
+    title: "Third post",
+    content: "Small content of first post",
+    comment: [
+      { id: 1, author: "Somebody Else", content: "U have a big problems now" },
+    ],
+  },
 ];

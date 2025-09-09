@@ -4,7 +4,12 @@
   align-items: center;
   color: var(--text);
   padding: 10px 25px 0px 25px;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.navigate {
+  display: flex;
+  gap: 20px;
 }
 
 .actions {
@@ -13,6 +18,13 @@
 }
 
 .link {
-  color: var(--link);
+  color: var(--text);
   text-decoration: none;
+  border: 1px solid var(--text);
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.active {
+  background-color: var(--background-2);
 }

@@ -1,0 +1,23 @@
+.card {
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.name {
+  color: var(--text);
+}
+
+.count {
+  color: var(--text);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--link);
+}
