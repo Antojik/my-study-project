@@ -4,13 +4,13 @@ import PostList from "../../widgets/postList/PostList";
 
 const MainLayout = () => {
   return (
-    <div>
+    <>
       <Header />
       <main>
         <PostList />
       </main>
       <Footer />
-    </div>
+    </>
   );
 };
 
