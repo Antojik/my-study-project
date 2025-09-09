@@ -1,0 +1,21 @@
+.card {
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  color: #1a1a1a;
+  font-weight: 500;
+  font-size: 28px;
+}
+
+.content {
+  color: #1a1a1a;
+  font-weight: 300;
+  font-size: 18px;
+}
