@@ -1,0 +1,13 @@
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 100px;
+}
+
+.selector {
+  display: flex;
+  flex-direction: column;
+  color: var(--text);
+  text-align: center;
+}

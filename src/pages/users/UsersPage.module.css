@@ -1,0 +1,10 @@
+.header {
+  text-align: center;
+  color: var(--text);
+  margin-bottom: 100px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}

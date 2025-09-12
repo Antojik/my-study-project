@@ -2,7 +2,7 @@
   min-width: 72px;
   min-height: 30px;
   border: 1px solid var(--text);
-  background-color: var(--background);
+  background-color: var(--background-1);
   color: var(--text);
   border-radius: 7px;
   cursor: pointer;

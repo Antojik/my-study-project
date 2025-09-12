@@ -1,30 +1,52 @@
-import PostCard from "../../entities/post/ui/PostCard";
+import { useCallback } from "react";
+import { MemoizedPostCard } from "../../entities/post/ui/PostCard";
+import { PostLengthFilter } from "../../features/postLengthFilter/ui/PostLegthFilter";
+import { usePosts } from "../../features/postList/model/hooks/usePosts";
+import styles from "./PostList.module.css";
+import { useGetUsersQuery } from "../../entities/user/api/usersApi";
 
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-}
+export const PostList = () => {
+  const { filteredPosts, userId, setUserId, minLength, setMinLength } =
+    usePosts();
 
-const posts: Post[] = [
-  { id: 1, title: "First post", content: "Small content of first post" },
-  {
-    id: 2,
-    title: "Second post",
-    content:
-      "Large content of first post, large content of first post, large content of first post, large content of first post, large content of first post, large content of first post, large content of first post, large content of first post",
-  },
-  { id: 3, title: "Third post", content: "Small content of first post" },
-];
+  const { data: users } = useGetUsersQuery();
 
-const PostList = () => {
+  const handleMinLengthChange = useCallback(
+    (value: number) => setMinLength(value),
+    [setMinLength]
+  );
+
+  const handleUserChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) =>
+      setUserId(e.target.value ? Number(e.target.value) : null),
+    [setUserId]
+  );
+
   return (
-    <div>
-      {posts.map((post) => (
-        <PostCard key={post.id} title={post.title} content={post.content} />
+    <>
+      <div className={styles.filters}>
+        <PostLengthFilter value={minLength} onChange={handleMinLengthChange} />
+        <div className={styles.selector}>
+          Filter by user:
+          <select value={userId ?? ""} onChange={handleUserChange}>
+            <option value="">All users</option>
+            {users?.map((user) => (
+              <option key={user.id} value={user.id}>
+                {user.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {filteredPosts.map((post) => (
+        <MemoizedPostCard
+          key={post.id}
+          id={post.id}
+          title={post.title}
+          body={post.body}
+        />
       ))}
-    </div>
+    </>
   );
 };
-
-export default PostList;
