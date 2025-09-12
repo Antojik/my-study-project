@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import type { Comment } from "../../entities/mocks/postsMock";
+import type { Comment } from "../../entities/mocks/interfaces";
 import styles from "./CommentList.module.css";
 
 interface CommentListProps {
@@ -30,8 +30,8 @@ export const CommentList = ({ comments = [] }: CommentListProps) => {
         <>
           {comments.map((comment) => (
             <div key={comment.id} className={styles.comments}>
-              <i className={styles.author}>{comment.author}</i>
-              <p className={styles.comment}>{comment.content}</p>
+              <i className={styles.author}>{comment.name}</i>
+              <p className={styles.comment}>{comment.body}</p>
             </div>
           ))}
         </>

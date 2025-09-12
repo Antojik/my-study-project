@@ -1,24 +1,29 @@
 import { memo } from "react";
 import { CommentList } from "../../../widgets/commentList/CommentList";
 import styles from "./PostCard.module.css";
-import type { Comment } from "../../mocks/interfaces";
 import { Link } from "react-router-dom";
+import { useGetCommentsByPostIdQuery } from "../../comment/api/commentsApi";
 
 interface PostCardProps {
   id: number;
   title: string;
-  content: string;
-  comments?: Comment[];
+  body: string;
 }
 
-const PostCard = ({ id, title, content, comments }: PostCardProps) => {
+const PostCard = ({ id, title, body }: PostCardProps) => {
+  const { data: comments, isLoading } = useGetCommentsByPostIdQuery(id);
+
   return (
     <div className={styles.card}>
       <Link to={`/posts/${id}`} className={styles.title}>
         {title}
       </Link>
-      <p className={styles.content}>{content}</p>
-      <CommentList comments={comments || []} />
+      <p className={styles.content}>{body}</p>
+      {isLoading ? (
+        <p className={styles.content}>Loading comments...</p>
+      ) : (
+        <CommentList comments={comments} />
+      )}
     </div>
   );
 };

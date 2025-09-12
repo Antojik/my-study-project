@@ -11,6 +11,8 @@
 
 .photos {
   display: flex;
+  flex-wrap: wrap;
+  height: 980px;
   gap: 40px;
 }
 

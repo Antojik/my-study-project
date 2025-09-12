@@ -2,12 +2,14 @@ import { useCallback } from "react";
 import { MemoizedPostCard } from "../../entities/post/ui/PostCard";
 import { PostLengthFilter } from "../../features/postLengthFilter/ui/PostLegthFilter";
 import { usePosts } from "../../features/postList/model/hooks/usePosts";
-import { users } from "../../entities/mocks/usersMock";
 import styles from "./PostList.module.css";
+import { useGetUsersQuery } from "../../entities/user/api/usersApi";
 
 export const PostList = () => {
   const { filteredPosts, userId, setUserId, minLength, setMinLength } =
     usePosts();
+
+  const { data: users } = useGetUsersQuery();
 
   const handleMinLengthChange = useCallback(
     (value: number) => setMinLength(value),
@@ -28,7 +30,7 @@ export const PostList = () => {
           Filter by user:
           <select value={userId ?? ""} onChange={handleUserChange}>
             <option value="">All users</option>
-            {users.map((user) => (
+            {users?.map((user) => (
               <option key={user.id} value={user.id}>
                 {user.name}
               </option>
@@ -42,8 +44,7 @@ export const PostList = () => {
           key={post.id}
           id={post.id}
           title={post.title}
-          content={post.content}
-          comments={post.comment}
+          body={post.body}
         />
       ))}
     </>

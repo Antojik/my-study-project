@@ -1,20 +1,21 @@
 import { useParams } from "react-router-dom";
-import { posts } from "../../entities/mocks/postsMock";
 import { MemoizedPostCard } from "../../entities/post/ui/PostCard";
-import { users } from "../../entities/mocks/usersMock";
 import styles from "./UserPostsPage.module.css";
 import { UserTabs } from "../../widgets/usersTabs/UsersTabs";
+import { useGetUserPostsQuery } from "../../entities/post/api/postsApi";
+import { useGetUserByIdQuery } from "../../entities/user/api/usersApi";
 
 export const UserPostsPage = () => {
   const { id } = useParams<{ id: string }>();
   const userId = Number(id);
 
-  const user = users.find((user) => user.id === userId);
-  const userPosts = posts.filter((post) => post.userId === userId);
+  const { data: userPosts, isLoading } = useGetUserPostsQuery(userId);
+  const { data: user } = useGetUserByIdQuery(userId);
 
-  if (userPosts.length === 0)
+  if (isLoading) return <h1 className={styles.title}>Loading...</h1>;
+  if (!userPosts?.length)
     return (
-      <h1 className={styles.title}>This user haven't got any posts, yet.</h1>
+      <h1 className={styles.title}>This user haven't got any posts, yet!</h1>
     );
 
   return (
@@ -26,8 +27,7 @@ export const UserPostsPage = () => {
           key={post.id}
           id={post.id}
           title={post.title}
-          content={post.content}
-          comments={post.comment}
+          body={post.body}
         />
       ))}
     </div>

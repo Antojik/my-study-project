@@ -1,14 +1,16 @@
 import { useParams } from "react-router-dom";
-import { users } from "../../entities/mocks/usersMock";
 import { UserTabs } from "../../widgets/usersTabs/UsersTabs";
 import styles from "./UserPage.module.css";
+import { useGetUserByIdQuery } from "../../entities/user/api/usersApi";
 
 export const UserPage = () => {
   const { id } = useParams<{ id: string }>();
   const userId = Number(id);
 
-  const user = users.find((user) => user.id === userId);
-  if (!user) return <h1 className={styles.name}>User not found</h1>;
+  const { data: user, isLoading, isError } = useGetUserByIdQuery(userId);
+
+  if (isLoading) return <h1 className={styles.name}>loading User</h1>;
+  if (isError || !user) return <h1 className={styles.name}>User not found</h1>;
 
   return (
     <div className={styles.container}>

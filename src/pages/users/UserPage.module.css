@@ -8,4 +8,5 @@
 
 .name {
   color: var(--text);
+  text-align: center;
 }

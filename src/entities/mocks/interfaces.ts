@@ -1,21 +1,22 @@
 export interface Comment {
+  postId: number;
   id: number;
-  author: string;
-  content: string;
+  name: string;
+  body: string;
 }
 
 export interface Post {
   id: number;
   userId: number;
   title: string;
-  content: string;
+  body: string;
   comment?: Comment[];
 }
 
 export interface Album {
   id: number;
   userId: number;
-  name: string;
+  title: string;
 }
 
 export interface Photo {
@@ -23,6 +24,7 @@ export interface Photo {
   albumId: number;
   title: string;
   url: string;
+  thumbnailUrl: string;
 }
 
 export interface User {
