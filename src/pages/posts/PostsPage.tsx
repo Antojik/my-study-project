@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
-import { WithLoading } from "../../shared/lib/hoc/WithLoading";
-import { PostList } from "../../widgets/postList/PostList";
 import styles from "./PostsPage.module.css";
+import { PostListWithLoading } from "../../widgets/postList/PostListWithLoading";
 
 export const PostsPage = () => {
-  const PostListWithLoading = WithLoading(PostList);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -11,16 +11,7 @@
   font-size: 14px;
 }
 
-.comment {
+.content {
   color: var(--text);
   font-size: 18px;
-}
-
-.comment_empty {
-  color: var(--text);
-  font-size: 18px;
-}
-
-.button {
-  color: var(--link);
 }
