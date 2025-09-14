@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import type { Comment } from "../../entities/mocks/postsMock";
+import type { Comment } from "../../entities/mocks/interfaces";
 import styles from "./CommentList.module.css";
 import { CommentCard } from "../../entities/comment/CommentCard";
 
