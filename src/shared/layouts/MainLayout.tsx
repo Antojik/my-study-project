@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
 import { Footer } from "../../widgets/layoutFooter/Footer";
 import { Header } from "../../widgets/layoutHeader/Header";
-import { PostList } from "../../widgets/postList/PostList";
-import { WithLoading } from "../lib/hoc/WithLoading";
+import { PostListWithLoading } from "../../widgets/postList/PostListWithLoading";
 
 export const MainLayout = () => {
-  const PostListWithLoading = WithLoading(PostList);
-
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

@@ -6,11 +6,12 @@
   width: 400px;
 }
 
-.comment_empty {
+.author {
   color: var(--text);
-  font-size: 18px;
+  font-size: 14px;
 }
 
-.button {
-  color: var(--link);
+.content {
+  color: var(--text);
+  font-size: 18px;
 }
