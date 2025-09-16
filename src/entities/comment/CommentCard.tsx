@@ -1,4 +1,4 @@
-import type { Comment } from "../mocks";
+import type { Comment } from "../mocks/interfaces";
 import styles from "./CommentCard.module.css";
 
 interface CommentCardProps {

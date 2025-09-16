@@ -1,32 +1,51 @@
-import { useCallback, useMemo, useState } from "react";
-import { posts, type Post } from "../../entities/mocks";
+import { useCallback } from "react";
 import { MemoizedPostCard } from "../../entities/post/ui/PostCard";
 import { PostLengthFilter } from "../../features/postLengthFilter/ui/PostLegthFilter";
-import { LengthFilter } from "../../features/postLengthFilter/lib/LengthFilter";
+import { usePosts } from "../../features/postList/model/hooks/usePosts";
+import { users } from "../../entities/mocks/usersMock";
+import styles from "./PostList.module.css";
 
 export const PostList = () => {
-  const [minLength, setMinLength] = useState(0);
+  const { filteredPosts, userId, setUserId, minLength, setMinLength } =
+    usePosts();
 
-  const filteredPosts: Post[] = useMemo(
-    () => LengthFilter(posts, minLength),
-    [minLength]
+  const handleMinLengthChange = useCallback(
+    (value: number) => setMinLength(value),
+    [setMinLength]
   );
 
-  const handleChange = useCallback((value: number) => {
-    setMinLength(value);
-  }, []);
+  const handleUserChange = useCallback(
+    (e: React.ChangeEvent<HTMLSelectElement>) =>
+      setUserId(e.target.value ? Number(e.target.value) : null),
+    [setUserId]
+  );
 
   return (
-    <div>
-      <PostLengthFilter value={minLength} onChange={handleChange} />
+    <>
+      <div className={styles.filters}>
+        <PostLengthFilter value={minLength} onChange={handleMinLengthChange} />
+        <div className={styles.selector}>
+          Filter by user:
+          <select value={userId ?? ""} onChange={handleUserChange}>
+            <option value="">All users</option>
+            {users.map((user) => (
+              <option key={user.id} value={user.id}>
+                {user.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       {filteredPosts.map((post) => (
         <MemoizedPostCard
           key={post.id}
+          id={post.id}
           title={post.title}
           content={post.content}
           comments={post.comment}
         />
       ))}
-    </div>
+    </>
   );
 };
