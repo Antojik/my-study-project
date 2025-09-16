@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 import ReactDOM from "react-dom";
-import styles from "./modal.module.css";
+import styles from "./Modal.module.css";
+import { ModalActions } from "./ModalActions";
+import { ModalBody } from "./ModalBody";
+import { ModalHeader } from "./ModalHeader";
 
 interface ModalProps {
   children: ReactNode;
@@ -8,7 +11,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
-const Modal = ({ children, open, onClose }: ModalProps) => {
+export const Modal = ({ children, open, onClose }: ModalProps) => {
   const portalRoot = document.getElementById("portal");
   if (!portalRoot) return null;
 
@@ -23,20 +26,6 @@ const Modal = ({ children, open, onClose }: ModalProps) => {
   );
 };
 
-const ModalHeader = ({ children }: { children: ReactNode }) => (
-  <div className={styles.header}>{children}</div>
-);
-
-const ModalBody = ({ children }: { children: ReactNode }) => (
-  <div className={styles.body}>{children}</div>
-);
-
-const ModalActions = ({ children }: { children: ReactNode }) => (
-  <div className={styles.actions}>{children}</div>
-);
-
 Modal.Header = ModalHeader;
 Modal.Body = ModalBody;
 Modal.Actions = ModalActions;
-
-export default Modal;

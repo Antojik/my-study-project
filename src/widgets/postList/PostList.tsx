@@ -1,30 +1,32 @@
-import PostCard from "../../entities/post/ui/PostCard";
+import { useCallback, useMemo, useState } from "react";
+import { posts, type Post } from "../../entities/mocks";
+import { MemoizedPostCard } from "../../entities/post/ui/PostCard";
+import { PostLengthFilter } from "../../features/postLengthFilter/ui/PostLegthFilter";
+import { LengthFilter } from "../../features/postLengthFilter/lib/LengthFilter";
 
-interface Post {
-  id: number;
-  title: string;
-  content: string;
-}
+export const PostList = () => {
+  const [minLength, setMinLength] = useState(0);
 
-const posts: Post[] = [
-  { id: 1, title: "First post", content: "Small content of first post" },
-  {
-    id: 2,
-    title: "Second post",
-    content:
-      "Large content of first post, large content of first post, large content of first post, large content of first post, large content of first post, large content of first post, large content of first post, large content of first post",
-  },
-  { id: 3, title: "Third post", content: "Small content of first post" },
-];
+  const filteredPosts: Post[] = useMemo(
+    () => LengthFilter(posts, minLength),
+    [minLength]
+  );
 
-const PostList = () => {
+  const handleChange = useCallback((value: number) => {
+    setMinLength(value);
+  }, []);
+
   return (
     <div>
-      {posts.map((post) => (
-        <PostCard key={post.id} title={post.title} content={post.content} />
+      <PostLengthFilter value={minLength} onChange={handleChange} />
+      {filteredPosts.map((post) => (
+        <MemoizedPostCard
+          key={post.id}
+          title={post.title}
+          content={post.content}
+          comments={post.comment}
+        />
       ))}
     </div>
   );
 };
-
-export default PostList;
