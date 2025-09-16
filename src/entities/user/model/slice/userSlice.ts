@@ -1,6 +1,6 @@
 import { createEntityAdapter, createSlice } from "@reduxjs/toolkit";
-import type { User } from "../../../mocks/interfaces";
 import type { RootState } from "../../../../app/providers/store/store";
+import type { User } from "../types";
 
 const usersAdapter = createEntityAdapter<User>();
 

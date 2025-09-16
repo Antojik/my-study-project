@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
-import type { Post } from "../../../../entities/mocks/interfaces";
+
 import { useGetPostsQuery } from "../../../../entities/post/api/postsApi";
+import type { Post } from "../../../../entities/post/model/types";
 
 export const usePosts = () => {
   const { data: posts, isLoading } = useGetPostsQuery();

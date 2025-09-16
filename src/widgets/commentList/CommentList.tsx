@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import type { Comment } from "../../entities/mocks/interfaces";
 import styles from "./CommentList.module.css";
+import type { Comment } from "../../entities/comment/model/types";
 
 interface CommentListProps {
   comments?: Comment[];
