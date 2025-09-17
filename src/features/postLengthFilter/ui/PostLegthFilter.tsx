@@ -9,11 +9,9 @@ export const PostLengthFilter = ({
   value,
   onChange,
 }: PostLengthFilterProps) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(Number(e.target.value) || 0);
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    onChange(Number(e.target.value));
   };
-
-  //check debounce
 
   return (
     <div className={styles.filter}>

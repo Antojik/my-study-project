@@ -4,6 +4,7 @@ import { PostLengthFilter } from "../../features/postLengthFilter/ui/PostLegthFi
 import { usePosts } from "../../features/postList/model/hooks/usePosts";
 import styles from "./PostList.module.css";
 import { useGetUsersQuery } from "../../entities/user/api/usersApi";
+import { ItemList } from "../../shared/ui/itemList/ItemList";
 
 export const PostList = () => {
   const { filteredPosts, userId, setUserId, minLength, setMinLength } =
@@ -39,14 +40,13 @@ export const PostList = () => {
         </div>
       </div>
 
-      {filteredPosts.map((post) => (
-        <MemoizedPostCard
-          key={post.id}
-          id={post.id}
-          title={post.title}
-          body={post.body}
-        />
-      ))}
+      <ItemList
+        items={filteredPosts}
+        keyExtractor={(post) => post.id}
+        renderItem={(post) => (
+          <MemoizedPostCard id={post.id} title={post.title} body={post.body} />
+        )}
+      />
     </>
   );
 };

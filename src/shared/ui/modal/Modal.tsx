@@ -1,14 +1,17 @@
-import type { ReactNode } from "react";
+import type { PropsWithChildren, ReactNode } from "react";
 import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
 
 interface ModalProps {
-  children: ReactNode;
   open: boolean;
   onClose: () => void;
 }
 
-export const Modal = ({ children, open, onClose }: ModalProps) => {
+export const Modal = ({
+  children,
+  open,
+  onClose,
+}: PropsWithChildren<ModalProps>) => {
   const portalRoot = document.getElementById("portal");
   if (!portalRoot) return null;
 

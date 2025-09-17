@@ -1,5 +1,6 @@
 import { useGetUsersQuery } from "../../entities/user/api/usersApi";
 import { UserCard } from "../../entities/user/UserCard";
+import { ItemList } from "../../shared/ui/itemList/ItemList";
 import styles from "./UserList.module.css";
 
 export const UserList = () => {
@@ -10,10 +11,10 @@ export const UserList = () => {
     return <h1 className={styles.title}>No users found</h1>;
 
   return (
-    <>
-      {users.map((user) => {
-        return <UserCard key={user.id} id={user.id} name={user.name} />;
-      })}
-    </>
+    <ItemList
+      items={users}
+      keyExtractor={(user) => user.id}
+      renderItem={(user) => <UserCard id={user.id} name={user.name} />}
+    />
   );
 };
